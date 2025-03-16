@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTC/USDT K线与EMA14分析</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>BTC/USDT K线与EMA14分析结果</h1>
+    </header>
+    
+    <main>
+      <section class="summary">
+        <h2>基本统计摘要</h2>
+        <div class="summary-cards">
+          <div class="card">
+            <h3>总K线数</h3>
+            <p id="totalCandles">加载中...</p>
+          </div>
+          <div class="card">
+            <h3>EMA14上方</h3>
+            <p id="aboveEMA">加载中...</p>
+            <p class="percentage" id="aboveEMAPercentage">加载中...</p>
+          </div>
+          <div class="card">
+            <h3>EMA14下方</h3>
+            <p id="belowEMA">加载中...</p>
+            <p class="percentage" id="belowEMAPercentage">加载中...</p>
+          </div>
+          <div class="card">
+            <h3>横穿EMA14</h3>
+            <p id="crossingEMA">加载中...</p>
+            <p class="percentage" id="crossingEMAPercentage">加载中...</p>
+          </div>
+        </div>
+      </section>
+      
+      <section class="trends">
+        <h2>趋势分析</h2>
+        <div class="summary-cards">
+          <div class="card trend-card">
+            <h3>上升趋势</h3>
+            <p id="uptrendCount">加载中...</p>
+            <div class="trend-details">
+              <p>平均持续: <span id="uptrendAvg">-</span>根K线</p>
+              <p>最长持续: <span id="uptrendMax">-</span>根K线</p>
+              <p>最短持续: <span id="uptrendMin">-</span>根K线</p>
+            </div>
+          </div>
+          <div class="card trend-card">
+            <h3>下降趋势</h3>
+            <p id="downtrendCount">加载中...</p>
+            <div class="trend-details">
+              <p>平均持续: <span id="downtrendAvg">-</span>根K线</p>
+              <p>最长持续: <span id="downtrendMax">-</span>根K线</p>
+              <p>最短持续: <span id="downtrendMin">-</span>根K线</p>
+            </div>
+          </div>
+          <div class="card trend-card">
+            <h3>震荡趋势</h3>
+            <p id="oscillationCount">加载中...</p>
+            <div class="trend-details">
+              <p>平均持续: <span id="oscillationAvg">-</span>根K线</p>
+              <p>最长持续: <span id="oscillationMax">-</span>根K线</p>
+              <p>最短持续: <span id="oscillationMin">-</span>根K线</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section class="charts">
+        <div class="chart-container">
+          <h2>EMA14位置分布</h2>
+          <canvas id="emaPositionChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+          <h2>EMA14位置百分比</h2>
+          <canvas id="emaPercentageChart"></canvas>
+        </div>
+      </section>
+      
+      <section class="charts">
+        <div class="chart-container">
+          <h2>趋势出现次数</h2>
+          <canvas id="trendCountChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+          <h2>趋势平均持续时间</h2>
+          <canvas id="trendDurationChart"></canvas>
+        </div>
+      </section>
+      
+      <section class="trend-duration-section">
+        <h2>趋势持续长度分布</h2>
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="uptrend">上升趋势</button>
+          <button class="tab-btn" data-tab="downtrend">下降趋势</button>
+          <button class="tab-btn" data-tab="oscillation">震荡趋势</button>
+        </div>
+        <div class="tab-content">
+          <div class="tab-pane active" id="uptrend-tab">
+            <div class="chart-container">
+              <canvas id="uptrendDistributionChart"></canvas>
+            </div>
+          </div>
+          <div class="tab-pane" id="downtrend-tab">
+            <div class="chart-container">
+              <canvas id="downtrendDistributionChart"></canvas>
+            </div>
+          </div>
+          <div class="tab-pane" id="oscillation-tab">
+            <div class="chart-container">
+              <canvas id="oscillationDistributionChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <footer>
+      <p>数据来源: 币安 BTCUSDT 15分钟K线</p>
+    </footer>
+  </div>
+  
+  <script src="app.js"></script>
+</body>
+</html> 

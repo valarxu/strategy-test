@@ -1,0 +1,17 @@
+{
+  "name": "binance-kline-analyzer",
+  "version": "1.0.0",
+  "description": "获取和分析币安BTC K线数据",
+  "main": "server.js",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "chart.js": "^4.4.8",
+    "express": "^4.21.2",
+    "https-proxy-agent": "^7.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "fetch": "node fetchKlines.js",
+    "analyze": "node analyzeKlines.js"
+  }
+}

@@ -1,0 +1,97 @@
+// @version=5
+strategy("ATR Channel Strategy", overlay=true, initial_capital=10000, default_qty_value=10000, default_qty_type=strategy.cash, commission_type=strategy.commission.percent, commission_value=0)
+
+// 参数设置
+atr_length = input.int(14, "ATR周期", minval=1)
+mult_1 = input.float(1.0, "第一层倍数", minval=0.1, step=0.1)
+mult_2 = input.float(2.0, "第二层倍数", minval=0.1, step=0.1)
+ema_length = input.int(14, "EMA周期", minval=1)
+
+// 计算EMA和ATR
+ema_val = ta.ema(close, ema_length)
+atr_val = ta.atr(atr_length)
+
+// 计算上下轨 - 基于EMA
+upper_1 = ema_val + atr_val * mult_1
+lower_1 = ema_val - atr_val * mult_1
+upper_2 = ema_val + atr_val * mult_2
+lower_2 = ema_val - atr_val * mult_2
+
+// 颜色设置
+color_1 = input.color(color.new(color.blue, 95), "第一层颜色")
+color_2 = input.color(color.new(color.purple, 95), "第二层颜色")
+ema_color = input.color(color.new(color.yellow, 0), "EMA线颜色")
+
+// 绘制通道 - 先绘制第二层，再绘制第一层
+fill(plot(upper_2), plot(lower_2), color=color_2)
+fill(plot(upper_1), plot(lower_1), color=color_1)
+
+// 绘制EMA线
+plot(ema_val, "EMA线", color=ema_color, linewidth=2)
+
+// 交易信号计算
+// 定义价格与通道边界的关系
+above_upper1 = close > upper_1
+below_upper1 = close < upper_1
+above_upper2 = close > upper_2
+below_upper2 = close < upper_2
+below_lower1 = close < lower_1
+above_lower1 = close > lower_1
+below_lower2 = close < lower_2
+above_lower2 = close > lower_2
+
+// 添加持仓状态跟踪变量：0=无持仓，1=多头持仓，-1=空头持仓
+var int position_state = 0
+
+// 用于追踪是否已触发2倍ATR通道的变量（用于限制开仓）
+var bool triggered_upper2 = false
+var bool triggered_lower2 = false
+
+// 更新触发状态
+if above_upper2
+    triggered_upper2 := true
+if below_lower2
+    triggered_lower2 := true
+
+// 重置触发状态（当价格回到1倍ATR通道内时）
+if below_upper1 and above_lower1
+    triggered_upper2 := false
+    triggered_lower2 := false
+
+// 开空条件：价格突破1倍ATR上轨且没有触发过2倍ATR上轨（或已重置）
+short_entry = ta.crossover(close, upper_1) and not triggered_upper2 and position_state != -1
+
+// 开空止损条件：突破2倍ATR上轨
+short_stop = above_upper2 and position_state == -1
+
+// 开空止盈条件：跌破1倍ATR下轨
+short_profit = ta.crossunder(close, lower_1) and position_state == -1
+
+// 开多条件：价格跌破1倍ATR下轨且没有触发过2倍ATR下轨（或已重置）
+long_entry = ta.crossunder(close, lower_1) and not triggered_lower2 and position_state != 1
+
+// 开多止损条件：跌破2倍ATR下轨
+long_stop = below_lower2 and position_state == 1
+
+// 开多止盈条件：突破1倍ATR上轨
+long_profit = ta.crossover(close, upper_1) and position_state == 1
+
+// 执行交易 - 先检查平仓条件，再检查开仓条件
+// 先检查平仓条件
+if (long_stop or long_profit) and position_state == 1
+    strategy.close("多头")
+    position_state := 0  // 更新为无持仓状态
+
+if (short_stop or short_profit) and position_state == -1
+    strategy.close("空头")
+    position_state := 0  // 更新为无持仓状态
+
+// 再检查开仓条件 - 只有在没有持仓的情况下才考虑开仓
+if position_state == 0
+    if long_entry
+        strategy.entry("多头", strategy.long)
+        position_state := 1  // 更新为多头持仓状态
+    
+    if short_entry
+        strategy.entry("空头", strategy.short)
+        position_state := -1  // 更新为空头持仓状态 

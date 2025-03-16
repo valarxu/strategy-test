@@ -1,0 +1,39 @@
+# Node.js 依赖
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# 数据文件
+/data/*.json
+
+# 环境变量和配置
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+config.json
+
+# 日志
+logs/
+*.log
+
+# IDE和编辑器
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+
+# 系统文件
+Thumbs.db
+.DS_Store
+*.swp
+*.swo
+
+# 临时文件
+tmp/
+temp/ 

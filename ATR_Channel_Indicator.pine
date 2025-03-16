@@ -1,0 +1,33 @@
+// @version=5
+indicator("ATR Channel", overlay=true)
+
+// 参数设置
+atr_length = input.int(14, "ATR周期", minval=1)
+mult_1 = input.float(1.0, "第一层倍数", minval=0.1, step=0.1)
+mult_2 = input.float(2.0, "第二层倍数", minval=0.1, step=0.1)
+ema_length = input.int(120, "EMA周期", minval=1)
+
+// 计算EMA和ATR
+ema_val = ta.ema(close, ema_length)
+atr_val = ta.atr(atr_length)
+
+// 计算上下轨 - 基于EMA
+upper_1 = ema_val + atr_val * mult_1
+lower_1 = ema_val - atr_val * mult_1
+upper_2 = ema_val + atr_val * mult_2
+lower_2 = ema_val - atr_val * mult_2
+
+// 颜色设置
+color_1 = input.color(color.new(color.blue, 95), "第一层颜色")
+color_2 = input.color(color.new(color.purple, 95), "第二层颜色")
+ema_color = input.color(color.new(color.yellow, 0), "EMA线颜色")
+
+// 绘制通道 - 先绘制第二层，再绘制第一层（使第一层显示在上面）
+fill(plot(upper_2), plot(lower_2), color=color_2)
+fill(plot(upper_1), plot(lower_1), color=color_1)
+
+// 绘制EMA线
+plot(ema_val, "EMA线", color=ema_color, linewidth=2)
+
+// 绘制中心线 - 可选保留
+// plot(close, "中心线", color=color.gray) 

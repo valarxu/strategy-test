@@ -1,0 +1,65 @@
+//@version=5
+indicator("EMA趋势通道指标", overlay=true)
+
+// 参数设置
+emaLength = input.int(14, "EMA长度", minval=1)
+minTrendLength = input.int(2, "趋势最小长度", minval=2, tooltip="连续多少根K线确认为趋势")
+
+// 计算EMA
+emaValue = ta.ema(close, emaLength)
+
+// 判断K线位置
+isAboveEma = open > emaValue and close > emaValue
+isBelowEma = open < emaValue and close < emaValue
+isCrossingEma = not isAboveEma and not isBelowEma
+
+// 存储状态：1=上方，-1=下方，0=横穿
+var int candleState = 0
+if isAboveEma
+    candleState := 1
+else if isBelowEma
+    candleState := -1
+else
+    candleState := 0
+
+// 跟踪连续状态计数
+var int uptrendCount = 0
+var int downtrendCount = 0
+
+// 更新连续状态计数
+if candleState == 1
+    uptrendCount := uptrendCount + 1
+    downtrendCount := 0
+else if candleState == -1
+    downtrendCount := downtrendCount + 1
+    uptrendCount := 0
+else
+    uptrendCount := 0
+    downtrendCount := 0
+
+// 确定趋势类型
+var string currentTrend = "oscillation" // 默认为震荡趋势
+
+if uptrendCount >= minTrendLength
+    currentTrend := "uptrend"
+else if downtrendCount >= minTrendLength
+    currentTrend := "downtrend"
+else
+    // 检查前一根和当前根是否构成趋势
+    bool isConsistentUptrend = candleState == 1 and candleState[1] == 1
+    bool isConsistentDowntrend = candleState == -1 and candleState[1] == -1
+    
+    if isConsistentUptrend
+        currentTrend := "uptrend"
+    else if isConsistentDowntrend
+        currentTrend := "downtrend"
+    else
+        currentTrend := "oscillation"
+
+// 绘制背景
+bgcolor(currentTrend == "uptrend" ? color.new(color.green, 90) :
+       currentTrend == "downtrend" ? color.new(color.red, 90) :
+       color.new(color.yellow, 90))
+
+// 绘制EMA线
+plot(emaValue, "EMA14", color.blue, 1)
