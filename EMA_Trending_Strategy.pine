@@ -4,9 +4,30 @@ strategy("ATR Channel Strategy", overlay=true, initial_capital=10000, default_qt
 // 参数设置
 emaLength = input.int(14, "EMA长度", minval=1)
 minTrendLength = input.int(2, "趋势最小长度", minval=2, tooltip="连续多少根K线确认为趋势")
+profitPercent = input.float(3.0, "止盈波幅百分比", minval=0.1, step=0.1, tooltip="达到该波幅百分比时触发止盈")
+
+// 布林带参数
+bbLength = input.int(20, "布林带长度", minval=5)
+bbMult = input.float(2.0, "布林带标准差倍数", minval=0.1, step=0.1)
+bbExpansionBars = input.int(3, "布林带连续扩张K线数", minval=2, maxval=5, tooltip="检测连续多少根K线布林带扩张")
 
 // 计算EMA
 emaValue = ta.ema(close, emaLength)
+
+// 计算布林带
+bbMiddle = ta.sma(close, bbLength)
+bbStdDev = ta.stdev(close, bbLength)
+bbUpper = bbMiddle + bbMult * bbStdDev
+bbLower = bbMiddle - bbMult * bbStdDev
+
+// 计算布林带宽度
+bbWidth = (bbUpper - bbLower) / bbMiddle * 100
+
+// 检测连续3根K线布林带宽度扩大
+bool isBBExpanding3Bars = true
+for i = 0 to bbExpansionBars - 2
+    if bbWidth[i] <= bbWidth[i+1]
+        isBBExpanding3Bars := false
 
 // 判断K线位置
 isAboveEma = open > emaValue and close > emaValue
@@ -68,15 +89,76 @@ bool downtrendStarted = trendChanged and currentTrend == "downtrend"
 bool uptrendEnded = trendChanged and previousTrend == "uptrend"
 bool downtrendEnded = trendChanged and previousTrend == "downtrend"
 
-// 交易信号
+// 记录开仓价格和是否已在当前趋势中开仓
+var float entryPrice = 0.0
+var bool inTrendPosition = false
+var bool hasLongPosition = false
+var bool hasShortPosition = false
+
+// 记录趋势开始时的状态，用于延迟开仓判断
+var bool pendingUptrend = false
+var bool pendingDowntrend = false
+var int pendingCounter = 0
+
+// 更新待开仓状态
 if (uptrendStarted)
-    strategy.entry("多单", strategy.long, comment="上升趋势开始")
+    pendingUptrend := true
+    pendingDowntrend := false
+    pendingCounter := 0
     
 if (downtrendStarted)
-    strategy.entry("空单", strategy.short, comment="下降趋势开始")
+    pendingDowntrend := true
+    pendingUptrend := false
+    pendingCounter := 0
+
+// 增加计数器
+if (pendingUptrend or pendingDowntrend)
+    pendingCounter := pendingCounter + 1
+
+// 止盈检查 - 修复计算逻辑
+float currentProfitPctLong = hasLongPosition ? (close - entryPrice) / entryPrice * 100 : 0.0
+float currentProfitPctShort = hasShortPosition ? (entryPrice - close) / entryPrice * 100 : 0.0
+
+bool takeProfitLong = hasLongPosition and currentProfitPctLong >= profitPercent
+bool takeProfitShort = hasShortPosition and currentProfitPctShort >= profitPercent
+
+// 交易信号 - 使用连续3根K线布林带扩张作为过滤条件
+if (pendingUptrend and pendingCounter >= 2 and isBBExpanding3Bars and not inTrendPosition)
+    strategy.entry("多单", strategy.long, comment="上升趋势+布林带连续扩张")
+    entryPrice := close
+    inTrendPosition := true
+    pendingUptrend := false
+    hasLongPosition := true
+    hasShortPosition := false
     
+if (pendingDowntrend and pendingCounter >= 2 and isBBExpanding3Bars and not inTrendPosition)
+    strategy.entry("空单", strategy.short, comment="下降趋势+布林带连续扩张")
+    entryPrice := close
+    inTrendPosition := true
+    pendingDowntrend := false
+    hasShortPosition := true
+    hasLongPosition := false
+
+// 止盈平仓 - 增加日志输出帮助调试
+if (takeProfitLong)
+    strategy.close("多单", comment="多单止盈: " + str.tostring(currentProfitPctLong, "#.##") + "%")
+    hasLongPosition := false
+    // 不重置inTrendPosition，保持在当前趋势中已开过仓的状态
+    
+if (takeProfitShort)
+    strategy.close("空单", comment="空单止盈: " + str.tostring(currentProfitPctShort, "#.##") + "%")
+    hasShortPosition := false
+    // 不重置inTrendPosition，保持在当前趋势中已开过仓的状态
+    
+// 趋势结束平仓
 if (uptrendEnded or downtrendEnded)
-    strategy.close_all(comment="趋势结束平仓")
+    if (hasLongPosition or hasShortPosition)
+        strategy.close_all(comment="趋势结束平仓")
+    inTrendPosition := false  // 趋势结束，重置开仓状态
+    pendingUptrend := false
+    pendingDowntrend := false
+    hasLongPosition := false
+    hasShortPosition := false
 
 // 绘制背景
 bgcolor(currentTrend == "uptrend" ? color.new(color.green, 90) :
@@ -86,7 +168,27 @@ bgcolor(currentTrend == "uptrend" ? color.new(color.green, 90) :
 // 绘制EMA线
 plot(emaValue, "EMA14", color.blue, 1)
 
+// 绘制布林带
+plot(bbUpper, "布林带上轨", color.new(color.purple, 50))
+plot(bbMiddle, "布林带中轨", color.new(color.purple, 50))
+plot(bbLower, "布林带下轨", color.new(color.purple, 50))
+
 // 绘制交易点位
-plotshape(series=uptrendStarted, title="做多信号", location=location.belowbar, color=color.green, style=shape.triangleup, size=size.small)
-plotshape(series=downtrendStarted, title="做空信号", location=location.abovebar, color=color.red, style=shape.triangledown, size=size.small)
+plotshape(series=pendingUptrend and pendingCounter >= 2 and isBBExpanding3Bars and not inTrendPosition, title="做多信号", location=location.belowbar, color=color.green, style=shape.triangleup, size=size.small)
+plotshape(series=pendingDowntrend and pendingCounter >= 2 and isBBExpanding3Bars and not inTrendPosition, title="做空信号", location=location.abovebar, color=color.red, style=shape.triangledown, size=size.small)
+plotshape(series=takeProfitLong or takeProfitShort, title="止盈信号", location=location.belowbar, color=color.purple, style=shape.diamond, size=size.small)
 plotshape(series=uptrendEnded or downtrendEnded, title="平仓信号", location=location.belowbar, color=color.blue, style=shape.circle, size=size.tiny)
+
+// 显示布林带宽度信息
+var label bbWidthLabel = na
+label.delete(bbWidthLabel)
+bbWidthLabel := label.new(
+    bar_index, high, 
+    text="布林带宽度: " + str.tostring(bbWidth, "#.##") + "\n连续扩张: " + (isBBExpanding3Bars ? "是" : "否") + 
+         (hasLongPosition ? "\n多单盈利: " + str.tostring(currentProfitPctLong, "#.##") + "%" : "") +
+         (hasShortPosition ? "\n空单盈利: " + str.tostring(currentProfitPctShort, "#.##") + "%" : ""), 
+    color=isBBExpanding3Bars ? color.green : color.red,
+    style=label.style_label_down,
+    textcolor=color.white,
+    size=size.tiny
+)

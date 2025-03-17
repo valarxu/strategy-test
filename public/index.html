@@ -3,131 +3,248 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BTC/USDT K线与EMA14分析</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>BTC/USDT K线分析</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    .stats-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .stats-box {
+      flex: 1;
+      min-width: 300px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .chart-container {
+      margin-top: 20px;
+      height: 300px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .loading {
+      text-align: center;
+      padding: 50px;
+      font-size: 18px;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <header>
-      <h1>BTC/USDT K线与EMA14分析结果</h1>
-    </header>
+    <h1>BTC/USDT 15分钟K线分析</h1>
     
-    <main>
-      <section class="summary">
-        <h2>基本统计摘要</h2>
-        <div class="summary-cards">
-          <div class="card">
-            <h3>总K线数</h3>
-            <p id="totalCandles">加载中...</p>
-          </div>
-          <div class="card">
-            <h3>EMA14上方</h3>
-            <p id="aboveEMA">加载中...</p>
-            <p class="percentage" id="aboveEMAPercentage">加载中...</p>
-          </div>
-          <div class="card">
-            <h3>EMA14下方</h3>
-            <p id="belowEMA">加载中...</p>
-            <p class="percentage" id="belowEMAPercentage">加载中...</p>
-          </div>
-          <div class="card">
-            <h3>横穿EMA14</h3>
-            <p id="crossingEMA">加载中...</p>
-            <p class="percentage" id="crossingEMAPercentage">加载中...</p>
-          </div>
-        </div>
-      </section>
-      
-      <section class="trends">
-        <h2>趋势分析</h2>
-        <div class="summary-cards">
-          <div class="card trend-card">
-            <h3>上升趋势</h3>
-            <p id="uptrendCount">加载中...</p>
-            <div class="trend-details">
-              <p>平均持续: <span id="uptrendAvg">-</span>根K线</p>
-              <p>最长持续: <span id="uptrendMax">-</span>根K线</p>
-              <p>最短持续: <span id="uptrendMin">-</span>根K线</p>
-            </div>
-          </div>
-          <div class="card trend-card">
-            <h3>下降趋势</h3>
-            <p id="downtrendCount">加载中...</p>
-            <div class="trend-details">
-              <p>平均持续: <span id="downtrendAvg">-</span>根K线</p>
-              <p>最长持续: <span id="downtrendMax">-</span>根K线</p>
-              <p>最短持续: <span id="downtrendMin">-</span>根K线</p>
-            </div>
-          </div>
-          <div class="card trend-card">
-            <h3>震荡趋势</h3>
-            <p id="oscillationCount">加载中...</p>
-            <div class="trend-details">
-              <p>平均持续: <span id="oscillationAvg">-</span>根K线</p>
-              <p>最长持续: <span id="oscillationMax">-</span>根K线</p>
-              <p>最短持续: <span id="oscillationMin">-</span>根K线</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <section class="charts">
-        <div class="chart-container">
-          <h2>EMA14位置分布</h2>
-          <canvas id="emaPositionChart"></canvas>
-        </div>
-        
-        <div class="chart-container">
-          <h2>EMA14位置百分比</h2>
-          <canvas id="emaPercentageChart"></canvas>
-        </div>
-      </section>
-      
-      <section class="charts">
-        <div class="chart-container">
-          <h2>趋势出现次数</h2>
-          <canvas id="trendCountChart"></canvas>
-        </div>
-        
-        <div class="chart-container">
-          <h2>趋势平均持续时间</h2>
-          <canvas id="trendDurationChart"></canvas>
-        </div>
-      </section>
-      
-      <section class="trend-duration-section">
-        <h2>趋势持续长度分布</h2>
-        <div class="tab-buttons">
-          <button class="tab-btn active" data-tab="uptrend">上升趋势</button>
-          <button class="tab-btn" data-tab="downtrend">下降趋势</button>
-          <button class="tab-btn" data-tab="oscillation">震荡趋势</button>
-        </div>
-        <div class="tab-content">
-          <div class="tab-pane active" id="uptrend-tab">
-            <div class="chart-container">
-              <canvas id="uptrendDistributionChart"></canvas>
-            </div>
-          </div>
-          <div class="tab-pane" id="downtrend-tab">
-            <div class="chart-container">
-              <canvas id="downtrendDistributionChart"></canvas>
-            </div>
-          </div>
-          <div class="tab-pane" id="oscillation-tab">
-            <div class="chart-container">
-              <canvas id="oscillationDistributionChart"></canvas>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+    <div id="loading" class="loading">加载数据中...</div>
     
-    <footer>
-      <p>数据来源: 币安 BTCUSDT 15分钟K线</p>
-    </footer>
+    <div id="content" style="display: none;">
+      <h2>基本统计</h2>
+      <div class="stats-container">
+        <div class="stats-box">
+          <h3>K线位置统计</h3>
+          <div id="basic-stats"></div>
+        </div>
+      </div>
+      
+      <h2>趋势分析</h2>
+      <div class="stats-container">
+        <div class="stats-box">
+          <h3>上升趋势</h3>
+          <div id="uptrend-stats"></div>
+        </div>
+        <div class="stats-box">
+          <h3>下降趋势</h3>
+          <div id="downtrend-stats"></div>
+        </div>
+        <div class="stats-box">
+          <h3>震荡趋势</h3>
+          <div id="oscillation-stats"></div>
+        </div>
+      </div>
+      
+      <h2>趋势涨跌幅分析</h2>
+      <div class="stats-container">
+        <div class="stats-box">
+          <h3>上升趋势涨幅分布</h3>
+          <div id="uptrend-change-stats"></div>
+        </div>
+        <div class="stats-box">
+          <h3>下降趋势跌幅分布</h3>
+          <div id="downtrend-change-stats"></div>
+        </div>
+        <div class="stats-box">
+          <h3>震荡趋势波幅分布</h3>
+          <div id="oscillation-change-stats"></div>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  <script src="app.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        // 获取分析数据
+        const response = await fetch('/api/analysis');
+        if (!response.ok) {
+          throw new Error('获取数据失败');
+        }
+        
+        const data = await response.json();
+        console.log('获取到的完整分析数据:', JSON.stringify(data, null, 2));
+        
+        // 检查趋势数据是否完整
+        if (!data.trends || !data.trends.uptrends || !data.trends.uptrends.averageChange) {
+          console.error('趋势涨跌幅数据不完整，可能需要重新运行分析脚本');
+          document.getElementById('loading').innerHTML = '趋势涨跌幅数据不完整，请重新运行分析脚本。';
+          return;
+        }
+        
+        // 隐藏加载提示，显示内容
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+        
+        // 渲染基本统计
+        const basicStatsEl = document.getElementById('basic-stats');
+        basicStatsEl.innerHTML = `
+          <table>
+            <tr><td>总K线数</td><td>${data.totalCandles}</td></tr>
+            <tr><td>位于EMA14上方的K线</td><td>${data.aboveEMA} (${data.aboveEMAPercentage}%)</td></tr>
+            <tr><td>位于EMA14下方的K线</td><td>${data.belowEMA} (${data.belowEMAPercentage}%)</td></tr>
+            <tr><td>横穿EMA14的K线</td><td>${data.crossingEMA} (${data.crossingEMAPercentage}%)</td></tr>
+          </table>
+        `;
+        
+        // 渲染上升趋势统计
+        const uptrendStatsEl = document.getElementById('uptrend-stats');
+        uptrendStatsEl.innerHTML = `
+          <table>
+            <tr><td>趋势次数</td><td>${data.trends.uptrends.count || 0}</td></tr>
+            <tr><td>平均持续K线数</td><td>${data.trends.uptrends.averageDuration || 0}</td></tr>
+            <tr><td>最长持续K线数</td><td>${data.trends.uptrends.maxDuration || 0}</td></tr>
+            <tr><td>最短持续K线数</td><td>${data.trends.uptrends.minDuration || 0}</td></tr>
+            <tr><td>平均涨幅</td><td>${data.trends.uptrends.averageChange || 0}%</td></tr>
+            <tr><td>最大涨幅>0.5%的次数</td><td>${data.trends.uptrends.highChangeCount || 0} (${((data.trends.uptrends.highChangeCount || 0) / (data.trends.uptrends.count || 1) * 100).toFixed(2)}%)</td></tr>
+          </table>
+        `;
+        
+        // 渲染下降趋势统计
+        const downtrendStatsEl = document.getElementById('downtrend-stats');
+        downtrendStatsEl.innerHTML = `
+          <table>
+            <tr><td>趋势次数</td><td>${data.trends.downtrends.count || 0}</td></tr>
+            <tr><td>平均持续K线数</td><td>${data.trends.downtrends.averageDuration || 0}</td></tr>
+            <tr><td>最长持续K线数</td><td>${data.trends.downtrends.maxDuration || 0}</td></tr>
+            <tr><td>最短持续K线数</td><td>${data.trends.downtrends.minDuration || 0}</td></tr>
+            <tr><td>平均跌幅</td><td>${data.trends.downtrends.averageChange || 0}%</td></tr>
+            <tr><td>最大跌幅<-0.5%的次数</td><td>${data.trends.downtrends.highChangeCount || 0} (${((data.trends.downtrends.highChangeCount || 0) / (data.trends.downtrends.count || 1) * 100).toFixed(2)}%)</td></tr>
+          </table>
+        `;
+        
+        // 渲染震荡趋势统计
+        const oscillationStatsEl = document.getElementById('oscillation-stats');
+        oscillationStatsEl.innerHTML = `
+          <table>
+            <tr><td>趋势次数</td><td>${data.trends.oscillations.count || 0}</td></tr>
+            <tr><td>平均持续K线数</td><td>${data.trends.oscillations.averageDuration || 0}</td></tr>
+            <tr><td>最长持续K线数</td><td>${data.trends.oscillations.maxDuration || 0}</td></tr>
+            <tr><td>最短持续K线数</td><td>${data.trends.oscillations.minDuration || 0}</td></tr>
+            <tr><td>平均波幅</td><td>${data.trends.oscillations.averageChange || 0}%</td></tr>
+          </table>
+        `;
+        
+        // 检查分布数据是否存在
+        if (data.trends.uptrends.distribution) {
+          // 渲染上升趋势涨幅分布
+          const uptrendChangeStatsEl = document.getElementById('uptrend-change-stats');
+          const uptrendCount = data.trends.uptrends.count || 1; // 避免除以零
+          uptrendChangeStatsEl.innerHTML = `
+            <table>
+              <tr><th>涨幅区间</th><th>次数</th><th>占比</th></tr>
+              <tr><td>小于0%</td><td>${data.trends.uptrends.distribution.negative || 0}</td><td>${((data.trends.uptrends.distribution.negative || 0) / uptrendCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>0% - 0.25%</td><td>${data.trends.uptrends.distribution.veryTiny || 0}</td><td>${((data.trends.uptrends.distribution.veryTiny || 0) / uptrendCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>0.25% - 0.5%</td><td>${data.trends.uptrends.distribution.tiny || 0}</td><td>${((data.trends.uptrends.distribution.tiny || 0) / uptrendCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>0.5% - 0.75%</td><td>${data.trends.uptrends.distribution.verySmall || 0}</td><td>${((data.trends.uptrends.distribution.verySmall || 0) / uptrendCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>0.75% - 1%</td><td>${data.trends.uptrends.distribution.small || 0}</td><td>${((data.trends.uptrends.distribution.small || 0) / uptrendCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>1% - 1.5%</td><td>${data.trends.uptrends.distribution.mediumSmall || 0}</td><td>${((data.trends.uptrends.distribution.mediumSmall || 0) / uptrendCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>1.5% - 2%</td><td>${data.trends.uptrends.distribution.medium || 0}</td><td>${((data.trends.uptrends.distribution.medium || 0) / uptrendCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>大于2%</td><td>${data.trends.uptrends.distribution.large || 0}</td><td>${((data.trends.uptrends.distribution.large || 0) / uptrendCount * 100).toFixed(2)}%</td></tr>
+            </table>
+          `;
+        }
+        
+        if (data.trends.downtrends.distribution) {
+          // 渲染下降趋势跌幅分布
+          const downtrendChangeStatsEl = document.getElementById('downtrend-change-stats');
+          const downtrendCount = data.trends.downtrends.count || 1; // 避免除以零
+          downtrendChangeStatsEl.innerHTML = `
+            <table>
+              <tr><th>跌幅区间</th><th>次数</th><th>占比</th></tr>
+              <tr><td>大于0%</td><td>${data.trends.downtrends.distribution.positive || 0}</td><td>${((data.trends.downtrends.distribution.positive || 0) / downtrendCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>0% 至 -0.25%</td><td>${data.trends.downtrends.distribution.veryTiny || 0}</td><td>${((data.trends.downtrends.distribution.veryTiny || 0) / downtrendCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>-0.25% 至 -0.5%</td><td>${data.trends.downtrends.distribution.tiny || 0}</td><td>${((data.trends.downtrends.distribution.tiny || 0) / downtrendCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>-0.5% 至 -0.75%</td><td>${data.trends.downtrends.distribution.verySmall || 0}</td><td>${((data.trends.downtrends.distribution.verySmall || 0) / downtrendCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>-0.75% 至 -1%</td><td>${data.trends.downtrends.distribution.small || 0}</td><td>${((data.trends.downtrends.distribution.small || 0) / downtrendCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>-1% 至 -1.5%</td><td>${data.trends.downtrends.distribution.mediumSmall || 0}</td><td>${((data.trends.downtrends.distribution.mediumSmall || 0) / downtrendCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>-1.5% 至 -2%</td><td>${data.trends.downtrends.distribution.medium || 0}</td><td>${((data.trends.downtrends.distribution.medium || 0) / downtrendCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>小于-2%</td><td>${data.trends.downtrends.distribution.large || 0}</td><td>${((data.trends.downtrends.distribution.large || 0) / downtrendCount * 100).toFixed(2)}%</td></tr>
+            </table>
+          `;
+        }
+        
+        if (data.trends.oscillations.distribution) {
+          // 渲染震荡趋势波幅分布
+          const oscillationChangeStatsEl = document.getElementById('oscillation-change-stats');
+          const oscillationCount = data.trends.oscillations.count || 1; // 避免除以零
+          oscillationChangeStatsEl.innerHTML = `
+            <table>
+              <tr><th>波幅区间</th><th>次数</th><th>占比</th></tr>
+              <tr><td>0% - 0.25%</td><td>${data.trends.oscillations.distribution.veryTiny || 0}</td><td>${((data.trends.oscillations.distribution.veryTiny || 0) / oscillationCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>0.25% - 0.5%</td><td>${data.trends.oscillations.distribution.tiny || 0}</td><td>${((data.trends.oscillations.distribution.tiny || 0) / oscillationCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>0.5% - 0.75%</td><td>${data.trends.oscillations.distribution.verySmall || 0}</td><td>${((data.trends.oscillations.distribution.verySmall || 0) / oscillationCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>0.75% - 1%</td><td>${data.trends.oscillations.distribution.small || 0}</td><td>${((data.trends.oscillations.distribution.small || 0) / oscillationCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>1% - 1.5%</td><td>${data.trends.oscillations.distribution.mediumSmall || 0}</td><td>${((data.trends.oscillations.distribution.mediumSmall || 0) / oscillationCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>1.5% - 2%</td><td>${data.trends.oscillations.distribution.medium || 0}</td><td>${((data.trends.oscillations.distribution.medium || 0) / oscillationCount * 100).toFixed(2)}%</td></tr>
+              <tr><td>大于2%</td><td>${data.trends.oscillations.distribution.large || 0}</td><td>${((data.trends.oscillations.distribution.large || 0) / oscillationCount * 100).toFixed(2)}%</td></tr>
+            </table>
+          `;
+        }
+        
+      } catch (error) {
+        console.error('加载数据失败:', error);
+        document.getElementById('loading').innerHTML = '加载数据失败，请确保已运行分析脚本。';
+      }
+    });
+  </script>
 </body>
 </html> 
