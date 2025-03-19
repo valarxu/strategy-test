@@ -11,7 +11,7 @@ const httpsAgent = new HttpsProxyAgent(proxy);
 const symbol = 'BTCUSDT';
 const interval = '15m';
 const limit = 1000; // 每次请求最大获取1000条K线数据
-const totalRequiredKlines = 6000; // 总共需要获取的K线数据数量
+const totalRequiredKlines = 15000; // 总共需要获取的K线数据数量
 const baseUrl = 'https://api.binance.com';
 const endpoint = '/api/v3/klines';
 

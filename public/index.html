@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BTC/USDT K线分析</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -39,7 +40,8 @@
     }
     .chart-container {
       margin-top: 20px;
-      height: 300px;
+      height: 400px;
+      width: 100%;
     }
     table {
       width: 100%;
@@ -106,6 +108,20 @@
         <div class="stats-box">
           <h3>震荡趋势波幅分布</h3>
           <div id="oscillation-change-stats"></div>
+        </div>
+      </div>
+      
+      <h2>EMA距离分析</h2>
+      <div class="stats-container">
+        <div class="stats-box" style="flex: 2; min-width: 600px;">
+          <h3>收盘价与EMA距离百分比分布</h3>
+          <div class="chart-container">
+            <canvas id="distance-chart"></canvas>
+          </div>
+        </div>
+        <div class="stats-box">
+          <h3>距离统计数据</h3>
+          <div id="distance-stats"></div>
         </div>
       </div>
     </div>
@@ -238,6 +254,114 @@
               <tr><td>大于2%</td><td>${data.trends.oscillations.distribution.large || 0}</td><td>${((data.trends.oscillations.distribution.large || 0) / oscillationCount * 100).toFixed(2)}%</td></tr>
             </table>
           `;
+        }
+        
+        // 渲染距离统计数据
+        if (data.emaDistance && data.emaDistance.statistics) {
+          const distanceStatsEl = document.getElementById('distance-stats');
+          distanceStatsEl.innerHTML = `
+            <table>
+              <tr><td>平均距离百分比</td><td>${data.emaDistance.statistics.mean}%</td></tr>
+              <tr><td>标准差</td><td>${data.emaDistance.statistics.stdDev}%</td></tr>
+              <tr><td>最大距离百分比</td><td>${data.emaDistance.statistics.max}%</td></tr>
+              <tr><td>最小距离百分比</td><td>${data.emaDistance.statistics.min}%</td></tr>
+              <tr><td>样本数量</td><td>${data.emaDistance.statistics.count}</td></tr>
+            </table>
+          `;
+          
+          // 绘制距离分布图表
+          if (data.emaDistance.distribution) {
+            const dist = data.emaDistance.distribution;
+            const ctx = document.getElementById('distance-chart').getContext('2d');
+            
+            new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: [
+                  '< -2%', 
+                  '-2% 至 -1.5%', 
+                  '-1.5% 至 -1%', 
+                  '-1% 至 -0.5%', 
+                  '-0.5% 至 -0.1%', 
+                  '-0.1% 至 0.1%', 
+                  '0.1% 至 0.5%', 
+                  '0.5% 至 1%', 
+                  '1% 至 1.5%', 
+                  '1.5% 至 2%', 
+                  '> 2%'
+                ],
+                datasets: [{
+                  label: 'K线数量',
+                  data: [
+                    dist.extremeNegative,
+                    dist.veryNegative,
+                    dist.negative,
+                    dist.slightlyNegative,
+                    dist.veryCloseNegative,
+                    dist.veryClose,
+                    dist.veryClosePositive,
+                    dist.slightlyPositive,
+                    dist.positive,
+                    dist.veryPositive,
+                    dist.extremePositive
+                  ],
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',  // 深红 - 极度负面
+                    'rgba(255, 132, 99, 0.7)',  // 浅红
+                    'rgba(255, 165, 89, 0.7)',  // 橙红
+                    'rgba(255, 205, 86, 0.7)',  // 橙黄
+                    'rgba(255, 230, 86, 0.7)',  // 浅黄
+                    'rgba(201, 203, 207, 0.7)', // 灰色 - 接近均线
+                    'rgba(190, 255, 86, 0.7)',  // 浅绿黄
+                    'rgba(145, 255, 86, 0.7)',  // 浅绿
+                    'rgba(86, 255, 145, 0.7)',  // 中绿
+                    'rgba(86, 225, 205, 0.7)',  // 蓝绿
+                    'rgba(54, 162, 235, 0.7)'   // 蓝色 - 极度正面
+                  ],
+                  borderColor: 'rgba(0, 0, 0, 0.1)',
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                  title: {
+                    display: true,
+                    text: '收盘价与EMA14的距离百分比分布'
+                  },
+                  legend: {
+                    display: false
+                  },
+                  tooltip: {
+                    callbacks: {
+                      label: function(context) {
+                        const value = context.raw;
+                        const total = data.emaDistance.statistics.count;
+                        const percentage = ((value / total) * 100).toFixed(1);
+                        return `${value} 根K线 (${percentage}%)`;
+                      }
+                    }
+                  }
+                },
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    title: {
+                      display: true,
+                      text: 'K线数量'
+                    }
+                  },
+                  x: {
+                    title: {
+                      display: true,
+                      text: '距离百分比 ((close-ema)/ema)'
+                    }
+                  }
+                }
+              }
+            });
+          }
         }
         
       } catch (error) {

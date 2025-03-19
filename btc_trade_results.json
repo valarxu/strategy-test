@@ -1,0 +1,1307 @@
+{
+  "trades": [
+    {
+      "time": "2025-01-27T21:00:00.000Z",
+      "type": "开多",
+      "price": 102295.12,
+      "investedAmount": "10000.00",
+      "capital": "10000.00"
+    },
+    {
+      "time": "2025-01-27T21:30:00.000Z",
+      "type": "平多",
+      "price": 101123.99,
+      "entryPrice": 102295.12,
+      "profitPercent": "-1.14%",
+      "investedAmount": "10000.00",
+      "profit": "-114.49",
+      "reason": "多头止损",
+      "capital": "9885.51"
+    },
+    {
+      "time": "2025-01-27T23:45:00.000Z",
+      "type": "开多",
+      "price": 102082.83,
+      "investedAmount": "9885.51",
+      "capital": "9885.51"
+    },
+    {
+      "time": "2025-01-28T01:45:00.000Z",
+      "type": "平多",
+      "price": 101382.67,
+      "entryPrice": 102082.83,
+      "profitPercent": "-0.69%",
+      "investedAmount": "9885.51",
+      "profit": "-67.80",
+      "reason": "多头止损",
+      "capital": "9817.71"
+    },
+    {
+      "time": "2025-01-28T02:30:00.000Z",
+      "type": "开多",
+      "price": 102290.25,
+      "investedAmount": "9817.71",
+      "capital": "9817.71"
+    },
+    {
+      "time": "2025-01-28T04:15:00.000Z",
+      "type": "平多",
+      "price": 103013.79,
+      "entryPrice": 102290.25,
+      "profitPercent": "0.71%",
+      "investedAmount": "9817.71",
+      "profit": "69.44",
+      "reason": "多头止盈",
+      "capital": "9887.16"
+    },
+    {
+      "time": "2025-01-28T15:00:00.000Z",
+      "type": "开多",
+      "price": 102937.33,
+      "investedAmount": "9887.16",
+      "capital": "9887.16"
+    },
+    {
+      "time": "2025-01-28T16:15:00.000Z",
+      "type": "平多",
+      "price": 102041.99,
+      "entryPrice": 102937.33,
+      "profitPercent": "-0.87%",
+      "investedAmount": "9887.16",
+      "profit": "-86.00",
+      "reason": "多头止损",
+      "capital": "9801.16"
+    },
+    {
+      "time": "2025-01-28T17:00:00.000Z",
+      "type": "开多",
+      "price": 103035.9,
+      "investedAmount": "9801.16",
+      "capital": "9801.16"
+    },
+    {
+      "time": "2025-01-28T18:45:00.000Z",
+      "type": "平多",
+      "price": 102205.79,
+      "entryPrice": 103035.9,
+      "profitPercent": "-0.81%",
+      "investedAmount": "9801.16",
+      "profit": "-78.96",
+      "reason": "多头止损",
+      "capital": "9722.20"
+    },
+    {
+      "time": "2025-01-28T20:45:00.000Z",
+      "type": "开空",
+      "price": 101264.48,
+      "investedAmount": "9722.20",
+      "capital": "9722.20"
+    },
+    {
+      "time": "2025-01-28T21:45:00.000Z",
+      "type": "平空",
+      "price": 100334.01,
+      "entryPrice": 101264.48,
+      "profitPercent": "0.92%",
+      "investedAmount": "9722.20",
+      "profit": "89.33",
+      "reason": "空头止盈",
+      "capital": "9811.53"
+    },
+    {
+      "time": "2025-01-29T06:45:00.000Z",
+      "type": "开多",
+      "price": 102801.64,
+      "investedAmount": "9811.53",
+      "capital": "9811.53"
+    },
+    {
+      "time": "2025-01-29T13:00:00.000Z",
+      "type": "平多",
+      "price": 102174.01,
+      "entryPrice": 102801.64,
+      "profitPercent": "-0.61%",
+      "investedAmount": "9811.53",
+      "profit": "-59.90",
+      "reason": "多头止损",
+      "capital": "9751.63"
+    },
+    {
+      "time": "2025-01-29T19:30:00.000Z",
+      "type": "开多",
+      "price": 103448.29,
+      "investedAmount": "9751.63",
+      "capital": "9751.63"
+    },
+    {
+      "time": "2025-01-29T20:15:00.000Z",
+      "type": "平多",
+      "price": 104364.59,
+      "entryPrice": 103448.29,
+      "profitPercent": "0.89%",
+      "investedAmount": "9751.63",
+      "profit": "86.38",
+      "reason": "多头止盈",
+      "capital": "9838.00"
+    },
+    {
+      "time": "2025-01-31T15:30:00.000Z",
+      "type": "开多",
+      "price": 105641.98,
+      "investedAmount": "9838.00",
+      "capital": "9838.00"
+    },
+    {
+      "time": "2025-01-31T17:45:00.000Z",
+      "type": "平多",
+      "price": 104580.87,
+      "entryPrice": 105641.98,
+      "profitPercent": "-1.00%",
+      "investedAmount": "9838.00",
+      "profit": "-98.82",
+      "reason": "多头止损",
+      "capital": "9739.19"
+    },
+    {
+      "time": "2025-01-31T18:30:00.000Z",
+      "type": "开空",
+      "price": 103096.27,
+      "investedAmount": "9739.19",
+      "capital": "9739.19"
+    },
+    {
+      "time": "2025-01-31T19:30:00.000Z",
+      "type": "平空",
+      "price": 102350,
+      "entryPrice": 103096.27,
+      "profitPercent": "0.72%",
+      "investedAmount": "9739.19",
+      "profit": "70.50",
+      "reason": "空头止盈",
+      "capital": "9809.68"
+    },
+    {
+      "time": "2025-02-03T15:15:00.000Z",
+      "type": "开多",
+      "price": 98339.99,
+      "investedAmount": "9809.68",
+      "capital": "9809.68"
+    },
+    {
+      "time": "2025-02-03T17:45:00.000Z",
+      "type": "平多",
+      "price": 99206.38,
+      "entryPrice": 98339.99,
+      "profitPercent": "0.88%",
+      "investedAmount": "9809.68",
+      "profit": "86.42",
+      "reason": "多头止盈",
+      "capital": "9896.11"
+    },
+    {
+      "time": "2025-02-04T08:30:00.000Z",
+      "type": "开空",
+      "price": 97893.03,
+      "investedAmount": "9896.11",
+      "capital": "9896.11"
+    },
+    {
+      "time": "2025-02-04T11:00:00.000Z",
+      "type": "平空",
+      "price": 99267.45,
+      "entryPrice": 97893.03,
+      "profitPercent": "-1.40%",
+      "investedAmount": "9896.11",
+      "profit": "-138.94",
+      "reason": "空头止损",
+      "capital": "9757.17"
+    },
+    {
+      "time": "2025-02-04T14:30:00.000Z",
+      "type": "开多",
+      "price": 100147.6,
+      "investedAmount": "9757.17",
+      "capital": "9757.17"
+    },
+    {
+      "time": "2025-02-04T15:15:00.000Z",
+      "type": "平多",
+      "price": 98994.14,
+      "entryPrice": 100147.6,
+      "profitPercent": "-1.15%",
+      "investedAmount": "9757.17",
+      "profit": "-112.38",
+      "reason": "多头止损",
+      "capital": "9644.79"
+    },
+    {
+      "time": "2025-02-04T16:00:00.000Z",
+      "type": "开多",
+      "price": 99861.99,
+      "investedAmount": "9644.79",
+      "capital": "9644.79"
+    },
+    {
+      "time": "2025-02-04T16:45:00.000Z",
+      "type": "平多",
+      "price": 99043.48,
+      "entryPrice": 99861.99,
+      "profitPercent": "-0.82%",
+      "investedAmount": "9644.79",
+      "profit": "-79.05",
+      "reason": "多头止损",
+      "capital": "9565.73"
+    },
+    {
+      "time": "2025-02-04T19:00:00.000Z",
+      "type": "开多",
+      "price": 99964,
+      "investedAmount": "9565.73",
+      "capital": "9565.73"
+    },
+    {
+      "time": "2025-02-04T19:45:00.000Z",
+      "type": "平多",
+      "price": 98859.77,
+      "entryPrice": 99964,
+      "profitPercent": "-1.10%",
+      "investedAmount": "9565.73",
+      "profit": "-105.67",
+      "reason": "多头止损",
+      "capital": "9460.07"
+    },
+    {
+      "time": "2025-02-04T20:15:00.000Z",
+      "type": "开空",
+      "price": 98274.48,
+      "investedAmount": "9460.07",
+      "capital": "9460.07"
+    },
+    {
+      "time": "2025-02-04T21:15:00.000Z",
+      "type": "平空",
+      "price": 97251.6,
+      "entryPrice": 98274.48,
+      "profitPercent": "1.04%",
+      "investedAmount": "9460.07",
+      "profit": "98.46",
+      "reason": "空头止盈",
+      "capital": "9558.53"
+    },
+    {
+      "time": "2025-02-05T17:30:00.000Z",
+      "type": "开空",
+      "price": 97406.57,
+      "investedAmount": "9558.53",
+      "capital": "9558.53"
+    },
+    {
+      "time": "2025-02-05T18:45:00.000Z",
+      "type": "平空",
+      "price": 96723.66,
+      "entryPrice": 97406.57,
+      "profitPercent": "0.70%",
+      "investedAmount": "9558.53",
+      "profit": "67.01",
+      "reason": "空头止盈",
+      "capital": "9625.55"
+    },
+    {
+      "time": "2025-02-06T06:30:00.000Z",
+      "type": "开多",
+      "price": 98366,
+      "investedAmount": "9625.55",
+      "capital": "9625.55"
+    },
+    {
+      "time": "2025-02-06T14:45:00.000Z",
+      "type": "平多",
+      "price": 97835.98,
+      "entryPrice": 98366,
+      "profitPercent": "-0.54%",
+      "investedAmount": "9625.55",
+      "profit": "-51.86",
+      "reason": "多头止损",
+      "capital": "9573.68"
+    },
+    {
+      "time": "2025-02-06T15:30:00.000Z",
+      "type": "开空",
+      "price": 97178.54,
+      "investedAmount": "9573.68",
+      "capital": "9573.68"
+    },
+    {
+      "time": "2025-02-06T18:00:00.000Z",
+      "type": "平空",
+      "price": 96298.79,
+      "entryPrice": 97178.54,
+      "profitPercent": "0.91%",
+      "investedAmount": "9573.68",
+      "profit": "86.67",
+      "reason": "空头止盈",
+      "capital": "9660.35"
+    },
+    {
+      "time": "2025-02-07T13:30:00.000Z",
+      "type": "开多",
+      "price": 98338,
+      "investedAmount": "9660.35",
+      "capital": "9660.35"
+    },
+    {
+      "time": "2025-02-07T14:00:00.000Z",
+      "type": "平多",
+      "price": 99573.91,
+      "entryPrice": 98338,
+      "profitPercent": "1.26%",
+      "investedAmount": "9660.35",
+      "profit": "121.41",
+      "reason": "多头止盈",
+      "capital": "9781.76"
+    },
+    {
+      "time": "2025-02-07T19:45:00.000Z",
+      "type": "开空",
+      "price": 96898.56,
+      "investedAmount": "9781.76",
+      "capital": "9781.76"
+    },
+    {
+      "time": "2025-02-07T20:15:00.000Z",
+      "type": "平空",
+      "price": 96187.39,
+      "entryPrice": 96898.56,
+      "profitPercent": "0.73%",
+      "investedAmount": "9781.76",
+      "profit": "71.79",
+      "reason": "空头止盈",
+      "capital": "9853.56"
+    },
+    {
+      "time": "2025-02-09T03:45:00.000Z",
+      "type": "开多",
+      "price": 97300,
+      "investedAmount": "9853.56",
+      "capital": "9853.56"
+    },
+    {
+      "time": "2025-02-09T11:30:00.000Z",
+      "type": "平多",
+      "price": 96594.65,
+      "entryPrice": 97300,
+      "profitPercent": "-0.72%",
+      "investedAmount": "9853.56",
+      "profit": "-71.43",
+      "reason": "多头止损",
+      "capital": "9782.12"
+    },
+    {
+      "time": "2025-02-09T13:45:00.000Z",
+      "type": "开空",
+      "price": 95877.92,
+      "investedAmount": "9782.12",
+      "capital": "9782.12"
+    },
+    {
+      "time": "2025-02-09T21:30:00.000Z",
+      "type": "平空",
+      "price": 95036.26,
+      "entryPrice": 95877.92,
+      "profitPercent": "0.88%",
+      "investedAmount": "9782.12",
+      "profit": "85.87",
+      "reason": "空头止盈",
+      "capital": "9868.00"
+    },
+    {
+      "time": "2025-02-10T01:30:00.000Z",
+      "type": "开空",
+      "price": 95546.09,
+      "investedAmount": "9868.00",
+      "capital": "9868.00"
+    },
+    {
+      "time": "2025-02-10T03:15:00.000Z",
+      "type": "平空",
+      "price": 96382.14,
+      "entryPrice": 95546.09,
+      "profitPercent": "-0.88%",
+      "investedAmount": "9868.00",
+      "profit": "-86.35",
+      "reason": "空头止损",
+      "capital": "9781.65"
+    },
+    {
+      "time": "2025-02-10T05:00:00.000Z",
+      "type": "开多",
+      "price": 97136.27,
+      "investedAmount": "9781.65",
+      "capital": "9781.65"
+    },
+    {
+      "time": "2025-02-10T08:30:00.000Z",
+      "type": "平多",
+      "price": 97834.21,
+      "entryPrice": 97136.27,
+      "profitPercent": "0.72%",
+      "investedAmount": "9781.65",
+      "profit": "70.28",
+      "reason": "多头止盈",
+      "capital": "9851.93"
+    },
+    {
+      "time": "2025-02-11T00:30:00.000Z",
+      "type": "开多",
+      "price": 98007.47,
+      "investedAmount": "9851.93",
+      "capital": "9851.93"
+    },
+    {
+      "time": "2025-02-11T13:15:00.000Z",
+      "type": "平多",
+      "price": 97543.3,
+      "entryPrice": 98007.47,
+      "profitPercent": "-0.47%",
+      "investedAmount": "9851.93",
+      "profit": "-46.66",
+      "reason": "多头止损",
+      "capital": "9805.27"
+    },
+    {
+      "time": "2025-02-11T13:45:00.000Z",
+      "type": "开空",
+      "price": 96799.53,
+      "investedAmount": "9805.27",
+      "capital": "9805.27"
+    },
+    {
+      "time": "2025-02-11T17:00:00.000Z",
+      "type": "平空",
+      "price": 96080.72,
+      "entryPrice": 96799.53,
+      "profitPercent": "0.74%",
+      "investedAmount": "9805.27",
+      "profit": "72.81",
+      "reason": "空头止盈",
+      "capital": "9878.08"
+    },
+    {
+      "time": "2025-02-12T13:30:00.000Z",
+      "type": "开空",
+      "price": 94520.37,
+      "investedAmount": "9878.08",
+      "capital": "9878.08"
+    },
+    {
+      "time": "2025-02-12T16:45:00.000Z",
+      "type": "平空",
+      "price": 96986.14,
+      "entryPrice": 94520.37,
+      "profitPercent": "-2.61%",
+      "investedAmount": "9878.08",
+      "profit": "-257.69",
+      "reason": "空头止损",
+      "capital": "9620.39"
+    },
+    {
+      "time": "2025-02-12T16:45:00.000Z",
+      "type": "开多",
+      "price": 96986.14,
+      "investedAmount": "9620.39",
+      "capital": "9620.39"
+    },
+    {
+      "time": "2025-02-12T21:30:00.000Z",
+      "type": "平多",
+      "price": 97863.42,
+      "entryPrice": 96986.14,
+      "profitPercent": "0.90%",
+      "investedAmount": "9620.39",
+      "profit": "87.02",
+      "reason": "多头止盈",
+      "capital": "9707.41"
+    },
+    {
+      "time": "2025-02-13T06:30:00.000Z",
+      "type": "开空",
+      "price": 96165.01,
+      "investedAmount": "9707.41",
+      "capital": "9707.41"
+    },
+    {
+      "time": "2025-02-13T16:15:00.000Z",
+      "type": "平空",
+      "price": 95459.47,
+      "entryPrice": 96165.01,
+      "profitPercent": "0.73%",
+      "investedAmount": "9707.41",
+      "profit": "71.22",
+      "reason": "空头止盈",
+      "capital": "9778.63"
+    },
+    {
+      "time": "2025-02-14T03:45:00.000Z",
+      "type": "开多",
+      "price": 97129.98,
+      "investedAmount": "9778.63",
+      "capital": "9778.63"
+    },
+    {
+      "time": "2025-02-14T12:30:00.000Z",
+      "type": "平多",
+      "price": 96596.2,
+      "entryPrice": 97129.98,
+      "profitPercent": "-0.55%",
+      "investedAmount": "9778.63",
+      "profit": "-53.74",
+      "reason": "多头止损",
+      "capital": "9724.90"
+    },
+    {
+      "time": "2025-02-14T16:45:00.000Z",
+      "type": "开多",
+      "price": 97658.7,
+      "investedAmount": "9724.90",
+      "capital": "9724.90"
+    },
+    {
+      "time": "2025-02-14T17:45:00.000Z",
+      "type": "平多",
+      "price": 98526,
+      "entryPrice": 97658.7,
+      "profitPercent": "0.89%",
+      "investedAmount": "9724.90",
+      "profit": "86.37",
+      "reason": "多头止盈",
+      "capital": "9811.26"
+    },
+    {
+      "time": "2025-02-15T01:45:00.000Z",
+      "type": "开多",
+      "price": 97804.24,
+      "investedAmount": "9811.26",
+      "capital": "9811.26"
+    },
+    {
+      "time": "2025-02-15T17:15:00.000Z",
+      "type": "平多",
+      "price": 97405.02,
+      "entryPrice": 97804.24,
+      "profitPercent": "-0.41%",
+      "investedAmount": "9811.26",
+      "profit": "-40.05",
+      "reason": "多头止损",
+      "capital": "9771.21"
+    },
+    {
+      "time": "2025-02-16T23:00:00.000Z",
+      "type": "开空",
+      "price": 96337.49,
+      "investedAmount": "9771.21",
+      "capital": "9771.21"
+    },
+    {
+      "time": "2025-02-17T14:00:00.000Z",
+      "type": "平空",
+      "price": 96925.21,
+      "entryPrice": 96337.49,
+      "profitPercent": "-0.61%",
+      "investedAmount": "9771.21",
+      "profit": "-59.61",
+      "reason": "空头止损",
+      "capital": "9711.60"
+    },
+    {
+      "time": "2025-02-17T15:45:00.000Z",
+      "type": "开空",
+      "price": 95659.46,
+      "investedAmount": "9711.60",
+      "capital": "9711.60"
+    },
+    {
+      "time": "2025-02-17T21:45:00.000Z",
+      "type": "平空",
+      "price": 96409.33,
+      "entryPrice": 95659.46,
+      "profitPercent": "-0.78%",
+      "investedAmount": "9711.60",
+      "profit": "-76.13",
+      "reason": "空头止损",
+      "capital": "9635.47"
+    },
+    {
+      "time": "2025-02-18T06:00:00.000Z",
+      "type": "开空",
+      "price": 95300.01,
+      "investedAmount": "9635.47",
+      "capital": "9635.47"
+    },
+    {
+      "time": "2025-02-18T12:30:00.000Z",
+      "type": "平空",
+      "price": 96151.99,
+      "entryPrice": 95300.01,
+      "profitPercent": "-0.89%",
+      "investedAmount": "9635.47",
+      "profit": "-86.14",
+      "reason": "空头止损",
+      "capital": "9549.33"
+    },
+    {
+      "time": "2025-02-18T16:15:00.000Z",
+      "type": "开空",
+      "price": 95266.78,
+      "investedAmount": "9549.33",
+      "capital": "9549.33"
+    },
+    {
+      "time": "2025-02-18T17:15:00.000Z",
+      "type": "平空",
+      "price": 94529.58,
+      "entryPrice": 95266.78,
+      "profitPercent": "0.77%",
+      "investedAmount": "9549.33",
+      "profit": "73.90",
+      "reason": "空头止盈",
+      "capital": "9623.23"
+    },
+    {
+      "time": "2025-02-19T10:00:00.000Z",
+      "type": "开多",
+      "price": 96371.3,
+      "investedAmount": "9623.23",
+      "capital": "9623.23"
+    },
+    {
+      "time": "2025-02-19T18:45:00.000Z",
+      "type": "平多",
+      "price": 95670.54,
+      "entryPrice": 96371.3,
+      "profitPercent": "-0.73%",
+      "investedAmount": "9623.23",
+      "profit": "-69.97",
+      "reason": "多头止损",
+      "capital": "9553.25"
+    },
+    {
+      "time": "2025-02-19T23:15:00.000Z",
+      "type": "开多",
+      "price": 96659.62,
+      "investedAmount": "9553.25",
+      "capital": "9553.25"
+    },
+    {
+      "time": "2025-02-20T10:45:00.000Z",
+      "type": "平多",
+      "price": 97373.98,
+      "entryPrice": 96659.62,
+      "profitPercent": "0.74%",
+      "investedAmount": "9553.25",
+      "profit": "70.60",
+      "reason": "多头止盈",
+      "capital": "9623.86"
+    },
+    {
+      "time": "2025-02-21T17:30:00.000Z",
+      "type": "开空",
+      "price": 97132.08,
+      "investedAmount": "9623.86",
+      "capital": "9623.86"
+    },
+    {
+      "time": "2025-02-21T19:15:00.000Z",
+      "type": "平空",
+      "price": 95904.13,
+      "entryPrice": 97132.08,
+      "profitPercent": "1.26%",
+      "investedAmount": "9623.86",
+      "profit": "121.67",
+      "reason": "空头止盈",
+      "capital": "9745.52"
+    },
+    {
+      "time": "2025-02-23T12:30:00.000Z",
+      "type": "开空",
+      "price": 95761.32,
+      "investedAmount": "9745.52",
+      "capital": "9745.52"
+    },
+    {
+      "time": "2025-02-23T23:00:00.000Z",
+      "type": "平空",
+      "price": 96161.63,
+      "entryPrice": 95761.32,
+      "profitPercent": "-0.42%",
+      "investedAmount": "9745.52",
+      "profit": "-40.74",
+      "reason": "空头止损",
+      "capital": "9704.78"
+    },
+    {
+      "time": "2025-02-24T04:15:00.000Z",
+      "type": "开空",
+      "price": 95350,
+      "investedAmount": "9704.78",
+      "capital": "9704.78"
+    },
+    {
+      "time": "2025-02-24T09:15:00.000Z",
+      "type": "平空",
+      "price": 96019.5,
+      "entryPrice": 95350,
+      "profitPercent": "-0.70%",
+      "investedAmount": "9704.78",
+      "profit": "-68.14",
+      "reason": "空头止损",
+      "capital": "9636.64"
+    },
+    {
+      "time": "2025-02-24T14:30:00.000Z",
+      "type": "开空",
+      "price": 95140.5,
+      "investedAmount": "9636.64",
+      "capital": "9636.64"
+    },
+    {
+      "time": "2025-02-24T15:15:00.000Z",
+      "type": "平空",
+      "price": 94333.52,
+      "entryPrice": 95140.5,
+      "profitPercent": "0.85%",
+      "investedAmount": "9636.64",
+      "profit": "81.74",
+      "reason": "空头止盈",
+      "capital": "9718.38"
+    },
+    {
+      "time": "2025-02-27T14:30:00.000Z",
+      "type": "开空",
+      "price": 85572.9,
+      "investedAmount": "9718.38",
+      "capital": "9718.38"
+    },
+    {
+      "time": "2025-02-27T14:45:00.000Z",
+      "type": "平空",
+      "price": 84968.65,
+      "entryPrice": 85572.9,
+      "profitPercent": "0.71%",
+      "investedAmount": "9718.38",
+      "profit": "68.62",
+      "reason": "空头止盈",
+      "capital": "9787.00"
+    },
+    {
+      "time": "2025-02-28T15:00:00.000Z",
+      "type": "开多",
+      "price": 83312.51,
+      "investedAmount": "9787.00",
+      "capital": "9787.00"
+    },
+    {
+      "time": "2025-02-28T15:15:00.000Z",
+      "type": "平多",
+      "price": 84311.88,
+      "entryPrice": 83312.51,
+      "profitPercent": "1.20%",
+      "investedAmount": "9787.00",
+      "profit": "117.40",
+      "reason": "多头止盈",
+      "capital": "9904.40"
+    },
+    {
+      "time": "2025-03-02T15:15:00.000Z",
+      "type": "开多",
+      "price": 86431.07,
+      "investedAmount": "9904.40",
+      "capital": "9904.40"
+    },
+    {
+      "time": "2025-03-02T15:30:00.000Z",
+      "type": "平多",
+      "price": 88081.19,
+      "entryPrice": 86431.07,
+      "profitPercent": "1.91%",
+      "investedAmount": "9904.40",
+      "profit": "189.09",
+      "reason": "多头止盈",
+      "capital": "10093.49"
+    },
+    {
+      "time": "2025-03-03T14:45:00.000Z",
+      "type": "开空",
+      "price": 89278.88,
+      "investedAmount": "10093.49",
+      "capital": "10093.49"
+    },
+    {
+      "time": "2025-03-03T18:15:00.000Z",
+      "type": "平空",
+      "price": 87766.09,
+      "entryPrice": 89278.88,
+      "profitPercent": "1.69%",
+      "investedAmount": "10093.49",
+      "profit": "171.03",
+      "reason": "空头止盈",
+      "capital": "10264.52"
+    },
+    {
+      "time": "2025-03-04T18:45:00.000Z",
+      "type": "开多",
+      "price": 86764.24,
+      "investedAmount": "10264.52",
+      "capital": "10264.52"
+    },
+    {
+      "time": "2025-03-04T19:00:00.000Z",
+      "type": "平多",
+      "price": 88093.99,
+      "entryPrice": 86764.24,
+      "profitPercent": "1.53%",
+      "investedAmount": "10264.52",
+      "profit": "157.31",
+      "reason": "多头止盈",
+      "capital": "10421.84"
+    },
+    {
+      "time": "2025-03-06T14:30:00.000Z",
+      "type": "开空",
+      "price": 89293.24,
+      "investedAmount": "10421.84",
+      "capital": "10421.84"
+    },
+    {
+      "time": "2025-03-06T15:00:00.000Z",
+      "type": "平空",
+      "price": 90650,
+      "entryPrice": 89293.24,
+      "profitPercent": "-1.52%",
+      "investedAmount": "10421.84",
+      "profit": "-158.35",
+      "reason": "空头止损",
+      "capital": "10263.48"
+    },
+    {
+      "time": "2025-03-06T15:15:00.000Z",
+      "type": "开多",
+      "price": 90889.97,
+      "investedAmount": "10263.48",
+      "capital": "10263.48"
+    },
+    {
+      "time": "2025-03-06T16:30:00.000Z",
+      "type": "平多",
+      "price": 90175.52,
+      "entryPrice": 90889.97,
+      "profitPercent": "-0.79%",
+      "investedAmount": "10263.48",
+      "profit": "-80.68",
+      "reason": "多头止损",
+      "capital": "10182.81"
+    },
+    {
+      "time": "2025-03-06T16:45:00.000Z",
+      "type": "开空",
+      "price": 89316.02,
+      "investedAmount": "10182.81",
+      "capital": "10182.81"
+    },
+    {
+      "time": "2025-03-06T17:30:00.000Z",
+      "type": "平空",
+      "price": 88481.17,
+      "entryPrice": 89316.02,
+      "profitPercent": "0.93%",
+      "investedAmount": "10182.81",
+      "profit": "95.18",
+      "reason": "空头止盈",
+      "capital": "10277.99"
+    },
+    {
+      "time": "2025-03-07T00:15:00.000Z",
+      "type": "开空",
+      "price": 87037.48,
+      "investedAmount": "10277.99",
+      "capital": "10277.99"
+    },
+    {
+      "time": "2025-03-07T00:30:00.000Z",
+      "type": "平空",
+      "price": 85918.13,
+      "entryPrice": 87037.48,
+      "profitPercent": "1.29%",
+      "investedAmount": "10277.99",
+      "profit": "132.18",
+      "reason": "空头止盈",
+      "capital": "10410.17"
+    },
+    {
+      "time": "2025-03-07T13:30:00.000Z",
+      "type": "开多",
+      "price": 90103.76,
+      "investedAmount": "10410.17",
+      "capital": "10410.17"
+    },
+    {
+      "time": "2025-03-07T15:30:00.000Z",
+      "type": "平多",
+      "price": 88520.39,
+      "entryPrice": 90103.76,
+      "profitPercent": "-1.76%",
+      "investedAmount": "10410.17",
+      "profit": "-182.94",
+      "reason": "多头止损",
+      "capital": "10227.23"
+    },
+    {
+      "time": "2025-03-07T16:15:00.000Z",
+      "type": "开空",
+      "price": 87476.22,
+      "investedAmount": "10227.23",
+      "capital": "10227.23"
+    },
+    {
+      "time": "2025-03-07T21:00:00.000Z",
+      "type": "平空",
+      "price": 86343.04,
+      "entryPrice": 87476.22,
+      "profitPercent": "1.30%",
+      "investedAmount": "10227.23",
+      "profit": "132.49",
+      "reason": "空头止盈",
+      "capital": "10359.72"
+    },
+    {
+      "time": "2025-03-10T09:45:00.000Z",
+      "type": "开空",
+      "price": 82514.26,
+      "investedAmount": "10359.72",
+      "capital": "10359.72"
+    },
+    {
+      "time": "2025-03-10T10:15:00.000Z",
+      "type": "平空",
+      "price": 81864.27,
+      "entryPrice": 82514.26,
+      "profitPercent": "0.79%",
+      "investedAmount": "10359.72",
+      "profit": "81.61",
+      "reason": "空头止盈",
+      "capital": "10441.32"
+    },
+    {
+      "time": "2025-03-10T13:45:00.000Z",
+      "type": "开空",
+      "price": 81528.94,
+      "investedAmount": "10441.32",
+      "capital": "10441.32"
+    },
+    {
+      "time": "2025-03-10T14:00:00.000Z",
+      "type": "平空",
+      "price": 80162.28,
+      "entryPrice": 81528.94,
+      "profitPercent": "1.68%",
+      "investedAmount": "10441.32",
+      "profit": "175.03",
+      "reason": "空头止盈",
+      "capital": "10616.35"
+    },
+    {
+      "time": "2025-03-11T08:45:00.000Z",
+      "type": "开多",
+      "price": 81131.16,
+      "investedAmount": "10616.35",
+      "capital": "10616.35"
+    },
+    {
+      "time": "2025-03-11T09:15:00.000Z",
+      "type": "平多",
+      "price": 81699.32,
+      "entryPrice": 81131.16,
+      "profitPercent": "0.70%",
+      "investedAmount": "10616.35",
+      "profit": "74.35",
+      "reason": "多头止盈",
+      "capital": "10690.70"
+    },
+    {
+      "time": "2025-03-11T13:15:00.000Z",
+      "type": "开多",
+      "price": 81448.98,
+      "investedAmount": "10690.70",
+      "capital": "10690.70"
+    },
+    {
+      "time": "2025-03-11T14:00:00.000Z",
+      "type": "平多",
+      "price": 80664.31,
+      "entryPrice": 81448.98,
+      "profitPercent": "-0.96%",
+      "investedAmount": "10690.70",
+      "profit": "-102.99",
+      "reason": "多头止损",
+      "capital": "10587.70"
+    },
+    {
+      "time": "2025-03-11T14:15:00.000Z",
+      "type": "开空",
+      "price": 79910.21,
+      "investedAmount": "10587.70",
+      "capital": "10587.70"
+    },
+    {
+      "time": "2025-03-11T15:00:00.000Z",
+      "type": "平空",
+      "price": 81225.68,
+      "entryPrice": 79910.21,
+      "profitPercent": "-1.65%",
+      "investedAmount": "10587.70",
+      "profit": "-174.29",
+      "reason": "空头止损",
+      "capital": "10413.41"
+    },
+    {
+      "time": "2025-03-11T16:15:00.000Z",
+      "type": "开多",
+      "price": 81487.27,
+      "investedAmount": "10413.41",
+      "capital": "10413.41"
+    },
+    {
+      "time": "2025-03-11T18:00:00.000Z",
+      "type": "平多",
+      "price": 82433.76,
+      "entryPrice": 81487.27,
+      "profitPercent": "1.16%",
+      "investedAmount": "10413.41",
+      "profit": "120.95",
+      "reason": "多头止盈",
+      "capital": "10534.36"
+    },
+    {
+      "time": "2025-03-12T07:45:00.000Z",
+      "type": "开多",
+      "price": 82447.79,
+      "investedAmount": "10534.36",
+      "capital": "10534.36"
+    },
+    {
+      "time": "2025-03-12T12:15:00.000Z",
+      "type": "平多",
+      "price": 83361.05,
+      "entryPrice": 82447.79,
+      "profitPercent": "1.11%",
+      "investedAmount": "10534.36",
+      "profit": "116.69",
+      "reason": "多头止盈",
+      "capital": "10651.05"
+    },
+    {
+      "time": "2025-03-12T14:45:00.000Z",
+      "type": "开空",
+      "price": 81535.72,
+      "investedAmount": "10651.05",
+      "capital": "10651.05"
+    },
+    {
+      "time": "2025-03-12T15:00:00.000Z",
+      "type": "平空",
+      "price": 80929.48,
+      "entryPrice": 81535.72,
+      "profitPercent": "0.74%",
+      "investedAmount": "10651.05",
+      "profit": "79.19",
+      "reason": "空头止盈",
+      "capital": "10730.25"
+    },
+    {
+      "time": "2025-03-12T17:15:00.000Z",
+      "type": "开多",
+      "price": 82770.13,
+      "investedAmount": "10730.25",
+      "capital": "10730.25"
+    },
+    {
+      "time": "2025-03-12T17:45:00.000Z",
+      "type": "平多",
+      "price": 81844.41,
+      "entryPrice": 82770.13,
+      "profitPercent": "-1.12%",
+      "investedAmount": "10730.25",
+      "profit": "-120.01",
+      "reason": "多头止损",
+      "capital": "10610.24"
+    },
+    {
+      "time": "2025-03-12T19:00:00.000Z",
+      "type": "开多",
+      "price": 82911.45,
+      "investedAmount": "10610.24",
+      "capital": "10610.24"
+    },
+    {
+      "time": "2025-03-12T22:15:00.000Z",
+      "type": "平多",
+      "price": 83498.59,
+      "entryPrice": 82911.45,
+      "profitPercent": "0.71%",
+      "investedAmount": "10610.24",
+      "profit": "75.14",
+      "reason": "多头止盈",
+      "capital": "10685.37"
+    },
+    {
+      "time": "2025-03-13T13:45:00.000Z",
+      "type": "开空",
+      "price": 81777.15,
+      "investedAmount": "10685.37",
+      "capital": "10685.37"
+    },
+    {
+      "time": "2025-03-13T15:45:00.000Z",
+      "type": "平空",
+      "price": 81044.72,
+      "entryPrice": 81777.15,
+      "profitPercent": "0.90%",
+      "investedAmount": "10685.37",
+      "profit": "95.70",
+      "reason": "空头止盈",
+      "capital": "10781.08"
+    },
+    {
+      "time": "2025-03-14T08:45:00.000Z",
+      "type": "开多",
+      "price": 82593.44,
+      "investedAmount": "10781.08",
+      "capital": "10781.08"
+    },
+    {
+      "time": "2025-03-14T11:15:00.000Z",
+      "type": "平多",
+      "price": 83222.47,
+      "entryPrice": 82593.44,
+      "profitPercent": "0.76%",
+      "investedAmount": "10781.08",
+      "profit": "82.11",
+      "reason": "多头止盈",
+      "capital": "10863.18"
+    },
+    {
+      "time": "2025-03-16T11:00:00.000Z",
+      "type": "开空",
+      "price": 83249.5,
+      "investedAmount": "10863.18",
+      "capital": "10863.18"
+    },
+    {
+      "time": "2025-03-16T11:30:00.000Z",
+      "type": "平空",
+      "price": 82529.27,
+      "entryPrice": 83249.5,
+      "profitPercent": "0.87%",
+      "investedAmount": "10863.18",
+      "profit": "93.98",
+      "reason": "空头止盈",
+      "capital": "10957.17"
+    },
+    {
+      "time": "2025-03-16T19:30:00.000Z",
+      "type": "开空",
+      "price": 83156.58,
+      "investedAmount": "10957.17",
+      "capital": "10957.17"
+    },
+    {
+      "time": "2025-03-16T22:00:00.000Z",
+      "type": "平空",
+      "price": 82574.31,
+      "entryPrice": 83156.58,
+      "profitPercent": "0.70%",
+      "investedAmount": "10957.17",
+      "profit": "76.72",
+      "reason": "空头止盈",
+      "capital": "11033.89"
+    },
+    {
+      "time": "2025-03-17T14:15:00.000Z",
+      "type": "开空",
+      "price": 82779.51,
+      "investedAmount": "11033.89",
+      "capital": "11033.89"
+    },
+    {
+      "time": "2025-03-17T15:45:00.000Z",
+      "type": "平空",
+      "price": 83531.06,
+      "entryPrice": 82779.51,
+      "profitPercent": "-0.91%",
+      "investedAmount": "11033.89",
+      "profit": "-100.18",
+      "reason": "空头止损",
+      "capital": "10933.71"
+    },
+    {
+      "time": "2025-03-17T17:30:00.000Z",
+      "type": "开多",
+      "price": 84244.81,
+      "investedAmount": "10933.71",
+      "capital": "10933.71"
+    },
+    {
+      "time": "2025-03-18T01:00:00.000Z",
+      "type": "平多",
+      "price": 83588.01,
+      "entryPrice": 84244.81,
+      "profitPercent": "-0.78%",
+      "investedAmount": "10933.71",
+      "profit": "-85.24",
+      "reason": "多头止损",
+      "capital": "10848.47"
+    },
+    {
+      "time": "2025-03-18T01:30:00.000Z",
+      "type": "开空",
+      "price": 83050.07,
+      "investedAmount": "10848.47",
+      "capital": "10848.47"
+    },
+    {
+      "time": "2025-03-18T06:30:00.000Z",
+      "type": "平空",
+      "price": 82319.16,
+      "entryPrice": 83050.07,
+      "profitPercent": "0.88%",
+      "investedAmount": "10848.47",
+      "profit": "95.48",
+      "reason": "空头止盈",
+      "capital": "10943.95"
+    },
+    {
+      "time": "2025-03-19T08:15:00.000Z",
+      "type": "开多",
+      "price": 83406.03,
+      "investedAmount": "10943.95",
+      "capital": "10943.95"
+    },
+    {
+      "time": "2025-03-19T11:30:00.000Z",
+      "type": "平多",
+      "price": 84002.59,
+      "entryPrice": 83406.03,
+      "profitPercent": "0.72%",
+      "investedAmount": "10943.95",
+      "profit": "78.28",
+      "reason": "多头止盈",
+      "capital": "11022.22"
+    }
+  ],
+  "summary": {
+    "initialCapital": 10000,
+    "finalCapital": 11022.222652435457,
+    "totalProfit": 1022.2226524354573,
+    "totalTrades": 144,
+    "profitPercentage": "10.22%"
+  }
+}

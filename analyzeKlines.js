@@ -448,6 +448,74 @@ function analyzeTrends(data) {
   }
 }
 
+// 计算价格与EMA的距离百分比分布
+function analyzeEMADistanceDistribution(data) {
+  // 距离百分比的区间分布
+  const distribution = {
+    extremeNegative: 0,  // < -2%
+    veryNegative: 0,     // -2% 至 -1.5%
+    negative: 0,         // -1.5% 至 -1%
+    slightlyNegative: 0, // -1% 至 -0.5%
+    veryCloseNegative: 0,// -0.5% 至 -0.1%
+    veryClose: 0,        // -0.1% 至 0.1%
+    veryClosePositive: 0,// 0.1% 至 0.5%
+    slightlyPositive: 0, // 0.5% 至 1%
+    positive: 0,         // 1% 至 1.5%
+    veryPositive: 0,     // 1.5% 至 2%
+    extremePositive: 0   // > 2%
+  };
+  
+  // 保存所有距离百分比，用于计算统计值
+  const allDistances = [];
+  
+  // 计算每根K线的收盘价与EMA的距离百分比
+  for (const candle of data) {
+    const close = parseFloat(candle.close);
+    const ema = candle.ema;
+    const distancePercent = ((close - ema) / ema) * 100;
+    
+    // 记录距离百分比
+    allDistances.push(distancePercent);
+    
+    // 统计分布
+    if (distancePercent < -2) distribution.extremeNegative++;
+    else if (distancePercent < -1.5) distribution.veryNegative++;
+    else if (distancePercent < -1) distribution.negative++;
+    else if (distancePercent < -0.5) distribution.slightlyNegative++;
+    else if (distancePercent < -0.1) distribution.veryCloseNegative++;
+    else if (distancePercent < 0.1) distribution.veryClose++;
+    else if (distancePercent < 0.5) distribution.veryClosePositive++;
+    else if (distancePercent < 1) distribution.slightlyPositive++;
+    else if (distancePercent < 1.5) distribution.positive++;
+    else if (distancePercent < 2) distribution.veryPositive++;
+    else distribution.extremePositive++;
+  }
+  
+  // 计算统计值
+  const sum = allDistances.reduce((acc, val) => acc + val, 0);
+  const mean = sum / allDistances.length;
+  
+  // 计算标准差
+  const squaredDifferences = allDistances.map(val => Math.pow(val - mean, 2));
+  const variance = squaredDifferences.reduce((acc, val) => acc + val, 0) / allDistances.length;
+  const stdDev = Math.sqrt(variance);
+  
+  // 找出最大和最小值
+  const max = Math.max(...allDistances);
+  const min = Math.min(...allDistances);
+  
+  return {
+    distribution,
+    statistics: {
+      mean: mean.toFixed(2),
+      stdDev: stdDev.toFixed(2),
+      max: max.toFixed(2),
+      min: min.toFixed(2),
+      count: allDistances.length
+    }
+  };
+}
+
 // 主函数
 function main() {
   try {
@@ -464,10 +532,15 @@ function main() {
     const trendAnalysis = analyzeTrends(dataWithEMA);
     console.log('趋势分析完成');
     
+    // 添加EMA距离分析
+    const distanceAnalysis = analyzeEMADistanceDistribution(dataWithEMA);
+    console.log('EMA距离分析完成');
+    
     // 合并分析结果
     const analysisResult = {
       ...basicAnalysis,
-      trends: trendAnalysis
+      trends: trendAnalysis,
+      emaDistance: distanceAnalysis // 添加距离分析结果
     };
     
     // 保存分析结果前检查
@@ -502,6 +575,12 @@ function main() {
     console.log('===== 趋势最大涨跌幅统计 =====');
     console.log(`上升趋势中最大涨幅大于0.5%的次数: ${trendAnalysis.uptrends.highChangeCount} (${(trendAnalysis.uptrends.highChangeCount / trendAnalysis.uptrends.count * 100).toFixed(2)}%)`);
     console.log(`下降趋势中最大跌幅小于-0.5%的次数: ${trendAnalysis.downtrends.highChangeCount} (${(trendAnalysis.downtrends.highChangeCount / trendAnalysis.downtrends.count * 100).toFixed(2)}%)`);
+    
+    console.log('===== EMA距离统计结果 =====');
+    console.log(`平均距离百分比: ${distanceAnalysis.statistics.mean}%`);
+    console.log(`标准差: ${distanceAnalysis.statistics.stdDev}%`);
+    console.log(`最大距离百分比: ${distanceAnalysis.statistics.max}%`);
+    console.log(`最小距离百分比: ${distanceAnalysis.statistics.min}%`);
     
     return analysisResult;
   } catch (error) {

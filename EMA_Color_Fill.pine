@@ -1,0 +1,70 @@
+//@version=5
+strategy("ATR Channel Strategy", overlay=true, initial_capital=10000, default_qty_value=10000, default_qty_type=strategy.cash, commission_type=strategy.commission.percent, commission_value=0.05)
+
+// 输入参数
+emaLength = input.int(20, title="EMA长度", minval=1)
+takeProfit = input.float(0.5, title="止盈百分比", step=0.1)
+deviation = input.float(0.005, title="偏离度", step=0.001)
+
+// 计算EMA均线
+emaValue = ta.ema(close, emaLength)
+
+// 添加状态变量，用于跟踪止盈后的状态
+var longPaused = false  // 多头交易暂停
+var shortPaused = false  // 空头交易暂停
+
+// 检测止盈条件
+longTakeProfitPrice = strategy.position_avg_price * (1 + takeProfit/100)
+shortTakeProfitPrice = strategy.position_avg_price * (1 - takeProfit/100)
+
+longTakeProfitReached = close >= longTakeProfitPrice and strategy.position_size > 0
+shortTakeProfitReached = close <= shortTakeProfitPrice and strategy.position_size < 0
+
+// 更新暂停状态
+if (longTakeProfitReached)
+    longPaused := true
+if (shortTakeProfitReached)
+    shortPaused := true
+
+// 重置暂停状态条件
+if (close < emaValue and longPaused)
+    longPaused := false
+if (close > emaValue and shortPaused)
+    shortPaused := false
+
+// 修改开仓条件，考虑暂停状态
+goLong = not longPaused and close > emaValue * (1 + deviation) and (close[1] <= emaValue[1] * (1 + deviation) or close[1] < emaValue[1])
+goShort = not shortPaused and close < emaValue * (1 - deviation) and (close[1] >= emaValue[1] * (1 - deviation) or close[1] > emaValue[1])
+
+// 额外增加平仓条件
+exitLong = close < emaValue  // 收盘价低于EMA时平多
+exitShort = close > emaValue  // 收盘价高于EMA时平空
+
+// 策略执行
+if (goLong)
+    strategy.entry("多头", strategy.long)
+    
+if (goShort)
+    strategy.entry("空头", strategy.short)
+
+// 使用strategy.close进行平仓
+if (exitLong or longTakeProfitReached)
+    strategy.close("多头", comment=longTakeProfitReached ? "多头止盈" : "多头止损")
+    
+if (exitShort or shortTakeProfitReached)
+    strategy.close("空头", comment=shortTakeProfitReached ? "空头止盈" : "空头止损")
+
+// 绘制EMA均线
+emaPlot = plot(emaValue, title="EMA", color=color.blue, linewidth=2)
+
+// 获取收盘价的绘图
+closePlot = plot(close, title="收盘价", color=color.new(color.white, 100))
+
+// 根据价格与EMA的关系进行填充
+fill(closePlot, emaPlot, 
+     close > emaValue ? color.new(color.green, 80) : color.new(color.red, 80),
+     title="EMA与价格填充")
+
+// 可选：绘制暂停状态指示
+// plotshape(longPaused, title="多头暂停", location=location.belowbar, color=color.new(color.red, 0), style=shape.circle, size=size.tiny)
+// plotshape(shortPaused, title="空头暂停", location=location.abovebar, color=color.new(color.red, 0), style=shape.circle, size=size.tiny) 
